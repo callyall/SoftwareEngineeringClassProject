@@ -1,6 +1,9 @@
 package com.softeng.ticket_application.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
@@ -15,7 +18,9 @@ public class Gate {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @NotEmpty
     private String name;
+    @NotNull
     private int capacity;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="eid",referencedColumnName="id")
