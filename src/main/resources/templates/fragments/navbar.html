@@ -1,0 +1,19 @@
+
+<header th:fragment="header" class="masthead mb-auto">
+    <div class="inner">
+        <a href="/">
+            <h3 class="masthead-brand" sec:authorize="isAuthenticated()" sec:authentication="name"></h3>
+            <h3 class="masthead-brand" sec:authorize="isAnonymous()">Ticket.com</h3>
+        </a>
+
+        <nav class="nav nav-masthead justify-content-center">
+            <a sec:authorize="isAnonymous()" th:class="${#httpServletRequest.requestURI} == '/' ? 'active nav-link' : 'nav-link'" th:href="@{/}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+            <a sec:authorize="hasAuthority('CASHIER')" th:class="${#httpServletRequest.requestURI} == '/tickets' ? 'active nav-link' : 'nav-link' " th:href="@{/tickets}" >Tickets</a>
+            <a sec:authorize="hasAuthority('CASHIER')" th:class="${#httpServletRequest.requestURI} == '/tickets/issue' ? 'active nav-link' : 'nav-link' " th:href="@{/tickets/issue}" >Issue a ticket</a>
+            <a sec:authorize="hasAuthority('ADMINISTRATOR')" th:class="${#httpServletRequest.requestURI} == '/events' ? 'active nav-link' : 'nav-link'" th:href="@{/events}" >Events</a>
+            <a sec:authorize="hasAuthority('ADMINISTRATOR')" th:class="${#httpServletRequest.requestURI} == '/events/create' ? 'active nav-link' : 'nav-link'" th:href="@{/events/create}" >Create an event</a>
+            <a sec:authorize="hasAuthority('ADMINISTRATOR')" th:class="${#httpServletRequest.requestURI} == '/statistics' ? 'active nav-link' : 'nav-link'" th:href="@{/statistics}">Statistics</a>
+            <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">Logout</a>
+        </nav>
+    </div>
+</header>

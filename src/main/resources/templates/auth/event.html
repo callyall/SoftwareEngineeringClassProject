@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--THYMELEAF XMLNS-->
+<html xmlns:th="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Event</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="/css/cover.css" rel="stylesheet" />
+    <style>
+        img{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+        }
+    </style>
+</head>
+<body class="text-center">
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header th:replace="fragments/navbar :: header">
+    </header>
+
+    <main role="main" class="inner cover">
+        <div class="white-box">
+            <h1 class="text-center">Event Information:</h1>
+            <p th:text="'Name: '+${event.name}"></p>
+            <p th:text="'Date: '+${event.date}"></p>
+            <p th:text="'Location: '+${event.location}"></p>
+            <p th:text="'Type: '+${event.type}"></p>
+            <a th:href="'/events/edit/'+${event.id}" class="form-control btn btn-warning">Edit</a>
+            <hr/>
+            <h3>Gates:</h3>
+            <div th:each="gate : ${event?.gates}">
+                <a th:href="'/gates/'+${gate?.id}" th:text="'Name:'+${gate?.name}+' - Capacity:'+${gate?.capacity}" class="form-control btn btn-info"></a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Ticket.com 2018</p>
+        </div>
+    </footer>
+</div>
+
+<script src="/js/jquery-3.2.1.slim.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/height.js"></script>
+
+</body>
+</html>

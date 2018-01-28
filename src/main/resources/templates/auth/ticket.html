@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--THYMELEAF XMLNS-->
+<html xmlns:th="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Ticket</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="/css/cover.css" rel="stylesheet" />
+    <style>
+        img{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+        }
+    </style>
+</head>
+<body class="text-center">
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header th:replace="fragments/navbar :: header">
+    </header>
+
+    <main role="main" class="inner cover">
+        <div class="row">
+            <div class="white-box">
+                <h1>Ticket</h1>
+                <br/>
+                <h3 class="text-center">Event:</h3>
+                <p th:text="'Event: '+${ticket.gate.event.name}"></p>
+                <p th:text="'Date: '+${ticket.gate.event.date}"></p>
+                <p th:text="'Location: '+${ticket.gate.event.location}"></p>
+                <p th:text="'Type: '+${ticket.gate.event.type}"></p>
+            </div>
+            <div class="white-box">
+                <h3 class="text-center">Person:</h3>
+                <p th:text="'First name: '+${ticket.firstName}"></p>
+                <p th:text="'Last name: '+${ticket.lastName}"></p>
+                <p th:text="${ticket.gate} != null ? 'Gate: '+${ticket.gate.name} : 'None'"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="white-box">
+                <a th:href="@{/tickets/edit/}+${ticket.id}" th:text="Edit" class="form-control btn btn-warning"></a>
+                <form th:action="@{/tickets/delete/}+${ticket.id}" th:method="DELETE">
+                    <input type="submit" value="Delete" class="form-control btn btn-danger" />
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Ticket.com 2018</p>
+        </div>
+    </footer>
+</div>
+
+<script src="/js/jquery-3.2.1.slim.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/height.js"></script>
+</body>
+</html>
