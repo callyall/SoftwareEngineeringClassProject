@@ -22,7 +22,7 @@ public class Ticket {
     private String lastName;
     @Email
     private String email;
-    private int phone;
+    private long phone;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="gid",referencedColumnName="id")
     private Gate gate;
@@ -63,11 +63,11 @@ public class Ticket {
         this.email = email;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(final int phone) {
+    public void setPhone(final long phone) {
         this.phone = phone;
     }
 
