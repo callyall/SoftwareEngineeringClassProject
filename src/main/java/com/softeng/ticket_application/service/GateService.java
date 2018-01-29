@@ -43,7 +43,11 @@ public class GateService {
     }
 
     public void delete(final int id){
-        gateRepository.delete(id);
+        try{
+            gateRepository.delete(id);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
 }
