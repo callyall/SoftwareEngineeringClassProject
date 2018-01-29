@@ -45,6 +45,10 @@ public class EventService {
     }
 
     public void delete(final int id){
-        eventRepository.delete(id);
+        try{
+            eventRepository.delete(id);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
