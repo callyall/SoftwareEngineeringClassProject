@@ -25,7 +25,7 @@ public class Gate {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="eid",referencedColumnName="id")
     private Event event;
-    @OneToMany(mappedBy="gate",cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy="gate")
     private List<Ticket> tickets;
 
     public Gate() {
