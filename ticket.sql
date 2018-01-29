@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2018 at 05:15 PM
+-- Generation Time: Jan 29, 2018 at 09:01 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -36,6 +36,14 @@ CREATE TABLE `event` (
   `type` varchar(100) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`id`, `name`, `edate`, `location`, `type`) VALUES
+(1, 'sda', '2018-12-12', 'asd', 'asd'),
+(8, 'asdasd', '2018-12-12', 'asdas', 'asdasd');
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +56,14 @@ CREATE TABLE `gate` (
   `capacity` int(11) NOT NULL,
   `eid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `gate`
+--
+
+INSERT INTO `gate` (`id`, `name`, `capacity`, `eid`) VALUES
+(1, 'sad', 2345, 1),
+(2, 'asd', 1234, 1);
 
 -- --------------------------------------------------------
 
@@ -76,12 +92,23 @@ INSERT INTO `role` (`role_id`, `role`) VALUES
 
 CREATE TABLE `ticket` (
   `id` int(11) NOT NULL,
-  `firstName` varchar(100) COLLATE utf8_bin NOT NULL,
-  `lastName` varchar(100) COLLATE utf8_bin NOT NULL,
+  `first_name` varchar(100) COLLATE utf8_bin NOT NULL,
+  `last_name` varchar(100) COLLATE utf8_bin NOT NULL,
   `email` varchar(1500) COLLATE utf8_bin NOT NULL,
-  `phone` int(11) NOT NULL,
+  `phone` bigint(11) NOT NULL,
   `gid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `ticket`
+--
+
+INSERT INTO `ticket` (`id`, `first_name`, `last_name`, `email`, `phone`, `gid`) VALUES
+(1, '123123', 'sadasd', '2asd@ssa', 34512, 1),
+(3, 'Persona ', 'Nongrata', 'persona@non.grata', 123523, 2),
+(4, 'D', 'A', 'test@dat.com', 1234456789, 2),
+(7, 'sadasd', 'asdasdasd', 'asdasd@dasdasd', 232543251, 1),
+(8, 'eeeeeeeeeeee', 'asdasd', '12312@dasdasd', 1235, 1);
 
 -- --------------------------------------------------------
 
@@ -94,15 +121,15 @@ CREATE TABLE `user` (
   `active` int(11) NOT NULL,
   `email` varchar(100) COLLATE utf8_bin NOT NULL,
   `password` varchar(500) COLLATE utf8_bin NOT NULL,
-  `firstName` varchar(100) COLLATE utf8_bin NOT NULL,
-  `lastName` varchar(100) COLLATE utf8_bin NOT NULL
+  `first_name` varchar(100) COLLATE utf8_bin NOT NULL,
+  `last_name` varchar(100) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `active`, `email`, `password`, `firstName`, `lastName`) VALUES
+INSERT INTO `user` (`user_id`, `active`, `email`, `password`, `first_name`, `last_name`) VALUES
 (1, 1, 'admin@ticket.com', '$2a$10$807HcBTHpY1bNDeyfqZAYu.bd9h/iuFJE.GRdKcAksAyB2fgSSRfG', 'Mister', 'Administrator'),
 (2, 1, 'cashier@ticket.com', '$2a$10$.CvEA/XbnCBjzNxtC93wGeC8yhs0EUbzH4Xd4PkcvhERq9.90qEwW', 'Mister', 'Cashier');
 
@@ -176,13 +203,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `gate`
 --
 ALTER TABLE `gate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `role`
@@ -194,13 +221,13 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
