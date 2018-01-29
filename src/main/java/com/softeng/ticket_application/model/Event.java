@@ -29,7 +29,7 @@ public class Event {
     private String location;
     @NotEmpty
     private String type;
-    @OneToMany(mappedBy="event",cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy="event")
     private List<Gate> gates;
 
     public Event() {
